@@ -59,27 +59,33 @@ function canvis() { //fallan algunos decimales
     console.log("preu: "+preu+"€ calers: "+diners+"€");
 
     let i = 0;
-    let billetes; //cuantos billetes de cada tipo;
+    let cantidad = 0;; //cuantos billetes de cada tipo;
     let tmp;    //dineros devueltos a cada ronda
-console.log(aDevolver);
 
+    //busca el valor del array más cercano al cambio a devolver 
     while (arrayCanvisDisponibles[i]>aDevolver) {
         i++;
     }
+    
     //calcular de mayor a menor cambio
-    if (aDevolver!==0) {
-        while (aDevolver>0) {
-            if (aDevolver>=1) {
-                billetes = Math.floor(aDevolver/arrayCanvisDisponibles[i]);
-            } else {
-                billetes = aDevolver-arrayCanvisDisponibles[i];
+    if (aDevolver!==0) {    
+        //mientras haya algo que devolver
+        while (aDevolver>0) {   
+
+            //mientras se pueda devolver más veces el mismo billete/moneda
+            while (aDevolver>=arrayCanvisDisponibles[i]) {
+                //busca el valor del array más cercano al cambio a devolver 
+                while (arrayCanvisDisponibles[i]>aDevolver) {
+                    i++;
+                }
+
+                aDevolver = (aDevolver - arrayCanvisDisponibles[i]).toFixed(2);
+                cantidad++; //cantidad del mismo billete/moneda
+                total = total + arrayCanvisDisponibles[i];
             }
-            tmp = billetes*arrayCanvisDisponibles[i];
-            console.log(billetes + " de " + arrayCanvisDisponibles[i].toString());
-            aDevolver = aDevolver - tmp;
-            total = total + tmp;
+            console.log(cantidad + " de " + arrayCanvisDisponibles[i].toString());
             i++;
-            billetes = 0;
+            cantidad = 0;
         }
     } else {
         total = 0;
