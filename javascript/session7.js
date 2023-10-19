@@ -70,7 +70,7 @@ function piramide() {
 
         //recorrido de la columna
         //parte blanca inicio
-        for (let j=0; j<=Math.floor(blancos/2);j++) {
+        for (let j=1; j<=Math.floor(blancos/2);j++) {
             let td = document.createElement("td");
             td.style.border = "1px solid black";
             td.style.width ="20px";
@@ -88,7 +88,7 @@ function piramide() {
             tr.appendChild(td);           
         }
         //parte blanca final, identica a la parte inicial
-        for (let j=0; j<=Math.floor(blancos/2);j++) {
+        for (let j=1; j<=Math.floor(blancos/2);j++) {
             let td = document.createElement("td");
             td.style.border = "1px solid black";
             td.style.width ="20px";
