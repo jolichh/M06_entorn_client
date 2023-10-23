@@ -84,7 +84,7 @@ function compta() {
     let countA = 0;
     let countB = 0;
     txt = txt.toLocaleLowerCase();
-    for (let i=0; i<txt.length; i++) {
+    for (let i=0; i<txt.length; i++) {  //otra forma de hacerlo es usando la funcion var[index]
         if (txt.charAt(i) === 'a') {
             countA++;
         } 
